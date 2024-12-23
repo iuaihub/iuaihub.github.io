@@ -1,195 +1,65 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线音乐播放器 (支持M3U8)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
-        li:hover {
-            background-color: #f0f0f0;
-        }
-        .song-title {
-            font-size: 16px;
-            color: #555;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        input[type="range"] {
-            width: 100%;
-            margin-top: 10px;
-        }
-        video { /* 使用video标签来支持hls.js */
-            width: 100%;
-            margin-top: 20px;
-        }
-    </style>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+
 </head>
-<body>
-    <div class="container">
-        <h1>在线音乐播放器 (支持M3U8)</h1>
-        <ul id="playlist"></ul>
-        <div class="controls">
-            <button onclick="playPrevious()">上一首</button>
-            <button onclick="togglePlayPause()">&#9654;</button>
-            <button onclick="playNext()">下一首</button>
-        </div>
-        <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)">
-        <video id="audio-player" controls></video>
-    </div>
 
-    <script>
-        const playlist = [
-            { title: '法国FM 1', url: 'http://rfichinois96k.ice.infomaniak.ch/rfichinois-96k.mp3' },
-            { title: '音乐台 2', url: 'https://vd2.bdstatic.com/mda-jiugyuw4xwqiwzet/sc/mda-jiugyuw4xwqiwzet.mp4' },
-            { title: '轮播台 3', url: 'http://sk.cri.cn/887.m3u8' },
-            { title: '直播MV 4', url: 'https://gcalic.v.myalicdn.com/gc/wgw05_1/index.m3u8' }
-        ];
+<body width=80%; margin:0 auto;>
 
-        let currentIndex = 0;
-        const audioPlayer = document.getElementById('audio-player');
-        const volumeControl = document.getElementById('volume-control');
-        let hls;
+<div class=WordSection1 style='layout-grid:15.6pt'>
 
-        function loadPlaylist() {
-            const playlistElement = document.getElementById('playlist');
-            playlistElement.innerHTML = ''; // Clear existing items
+<p class=MsoNormal align=left style='text-align:left'><b><span
+style='font-size:18.0pt'>使用指南<span lang=EN-US><o:p></o:p></span></span></b></p>
 
-            playlist.forEach((item, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = item.title;
-                listItem.onclick = () => playTrack(index);
-                playlistElement.appendChild(listItem);
-            });
-        }
+<p class=MsoNormal><span lang=EN-US style='mso-ligatures:none;mso-no-proof:
+yes'><img width=800 height=541
+src="./img/image001.png" alt=基本功能 v:shapes="图片_x0020_6"></span></p>
 
-        function playTrack(index) {
-            if (index >= 0 && index < playlist.length) {
-                currentIndex = index;
-                const track = playlist[currentIndex];
+<p class=MsoNormal>通常情况下，与大型语言模型<span lang=EN-US> (LLMs) </span>的基本交互可以通过此区域（如上图）提供的基础功能进行。</p>
 
-                if (track.url.endsWith('.m3u8')) {
-                    if (typeof Hls !== 'undefined') {
-                        if (hls) {
-                            hls.destroy();
-                        }
-                        hls = new Hls();
-                        hls.loadSource(track.url);
-                        hls.attachMedia(audioPlayer);
-                        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                            audioPlayer.play();
-                        });
-                    } else if (audioPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                        audioPlayer.src = track.url;
-                        audioPlayer.addEventListener('canplay', function() {
-                            audioPlayer.play();
-                        });
-                    }
-                } else {
-                    audioPlayer.src = track.url;
-                    audioPlayer.play();
-                }
-                updatePlayButton();
-            }
-        }
+<p class=MsoNormal><b>基本功能说明<span lang=EN-US><o:p></o:p></span></b></p>
 
-        function togglePlayPause() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-            } else {
-                audioPlayer.pause();
-            }
-            updatePlayButton();
-        }
+<p class=MsoNormal><span lang=EN-US style='mso-ligatures:none;mso-no-proof:
+yes'><img width=800 height=287
+src="./img/image002.png" alt=基本功能说明 v:shapes="图片_x0020_5"></span></p>
 
-        function updatePlayButton() {
-            const playPauseButton = document.querySelector('.controls button:nth-child(2)');
-            if (audioPlayer.paused) {
-                playPauseButton.innerHTML = '&#9654;';
-            } else {
-                playPauseButton.innerHTML = '&#10074;&#10074;';
-            }
-        }
+<ol style='margin-top:0cm' start=1 type=1>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>模型选择</b>：选择当前对话所使用的大型语言模型<span
+     lang=EN-US> (LLM)</span>。模型的设置详见模型服务商。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>文件<span
+     lang=EN-US> / </span>图片上传</b>：当所选模型支持文件或图片识别功能时，用户可以在与模型的对话中上传文件或图片。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>温度设置</b>：调节模型输出的随机性程度。数值越高，输出结果越随机。详细说明请参考大语言模型指南。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>历史记录设置</b>：设定本次对话中模型需要记忆的聊天记录数量。历史记录越长，模型能够记忆的对话内容越多，但同时也会消耗更多的上下文<span
+     lang=EN-US> token</span>。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>语音输入</b>：点击该按钮后，可以将语音转换为文字输入。有关详细信息，请参考语音文字转换。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>插件设置</b>：选择本次对话中需要启用的插件。有关详细信息，请参考插件使用。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b><span
+     lang=EN-US>Token </span>用量</b>：显示本次对话的上下文长度以及<span lang=EN-US> Token </span>消耗情况。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>新建话题</b>：结束当前对话并开启一个新的对话主题。有关详细信息，请参考话题使用。</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><b>发送按钮</b>：将当前输入内容发送至模型。下拉菜单提供额外的发送操作选项。</li>
+</ol>
 
-        function playNext() {
-            currentIndex = (currentIndex + 1) % playlist.length;
-            playTrack(currentIndex);
-        }
+<p class=MsoNormal><span lang=EN-US style='mso-ligatures:none;mso-no-proof:
+yes'><img width=800 height=287
+src="./img/image003.png" alt=发送按钮 v:shapes="图片_x0020_4"></span></p>
 
-        function playPrevious() {
-            currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-            playTrack(currentIndex);
-        }
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo6;tab-stops:list 36.0pt'><b>发送快捷键</b>：设置使用<span
+     lang=EN-US> Enter </span>键或 <span lang=EN-US style='font-family:"Cambria Math",serif;
+     mso-bidi-font-family:"Cambria Math"'>⌘</span><span lang=EN-US> + Enter </span>键发送消息和换行的快捷方式。</li>
+ <li><span
+     lang=EN-US> -&nbsp;</span><b>添加一条<span lang=EN-US> AI </span>消息</b>：在对话上下文中手动添加并编辑一条由<span lang=EN-US> AI </span>角色输入的消息，该操作不会触发模型响应。</li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo6;tab-stops:list 36.0pt'><b><span
+     lang=EN-US> -&nbsp;</span>添加一条用户消息</b>：将当前输入内容作为用户角色输入的消息添加到对话上下文中，该操作不会触发模型响应。</li>
+</ul>
 
-        function setVolume(volume) {
-            audioPlayer.volume = volume;
-        }
+</div>
 
-        // Load hls.js script if it's not already defined
-        if (typeof Hls === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/hls.js@latest';
-            script.onload = function() {
-                initializePlayer();
-            };
-            document.head.appendChild(script);
-        } else {
-            initializePlayer();
-        }
-
-        function initializePlayer() {
-            loadPlaylist();
-            playTrack(currentIndex);
-        }
-    </script>
 </body>
+
 </html>
-
-
-
-
-
-
