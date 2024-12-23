@@ -3,15 +3,76 @@ xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:w="urn:schemas-microsoft-com:office:word"
 xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
 xmlns="http://www.w3.org/TR/REC-html40">
-
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            align-items: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #f0f0f0;
+        }
+        .song-title {
+            font-size: 16px;
+            color: #555;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-top: 10px;
+        }
+        video { /* 使用video标签来支持hls.js */
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 
 </head>
 
-<body width=80%; margin:0 auto;>
+<body>
 
-<div class=WordSection1 style='layout-grid:15.6pt'>
+<div class="container">
 
 <p class=MsoNormal align=left style='text-align:left'><b><span
 style='font-size:18.0pt'>使用指南<span lang=EN-US><o:p></o:p></span></span></b></p>
@@ -54,8 +115,8 @@ src="./img/image003.png" alt=发送按钮 v:shapes="图片_x0020_4"></span></p>
      mso-bidi-font-family:"Cambria Math"'>⌘</span><span lang=EN-US> + Enter </span>键发送消息和换行的快捷方式。</li>
  <li><span
      lang=EN-US> -&nbsp;</span><b>添加一条<span lang=EN-US> AI </span>消息</b>：在对话上下文中手动添加并编辑一条由<span lang=EN-US> AI </span>角色输入的消息，该操作不会触发模型响应。</li>
- <li class=MsoNormal style='mso-list:l1 level1 lfo6;tab-stops:list 36.0pt'><b><span
-     lang=EN-US> -&nbsp;</span>添加一条用户消息</b>：将当前输入内容作为用户角色输入的消息添加到对话上下文中，该操作不会触发模型响应。</li>
+ <li><span
+     lang=EN-US> -&nbsp;</span><b>添加一条用户消息</b>：将当前输入内容作为用户角色输入的消息添加到对话上下文中，该操作不会触发模型响应。</li>
 </ul>
 
 </div>
